@@ -1,0 +1,32 @@
+.hris-wizard{
+    margin-top: 5px;
+}
+.wizard > .content {
+    min-height: 25em !important;
+    overflow: auto !important;
+}
+.form-horizontal.bucket-form .form-group {
+    border-bottom: 0px solid #eff2f7;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+.border-right{
+    border-right: 1px solid #f3f3f3;
+}
+.control-label{
+    color: #0c0c0c;
+    font-weight: 600;
+}
+.form-control {
+    color: #0c0c0c;
+    font-size: 13px;
+
+}
+.panel-hris > .panel-heading{
+    background: #c09c0d;
+    color: #fff;
+    font-weight: 600;
+}
+.panel-hris .tools a{
+    color: #fff;
+}
