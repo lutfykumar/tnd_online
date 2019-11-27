@@ -1,0 +1,6 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^tnd\.ellenka\.net$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.tnd\.ellenka\.net$
+RewriteRule ^/?$ "http\:\/\/tnd\.ellenka\.net\/public" [R=301,L]
+
