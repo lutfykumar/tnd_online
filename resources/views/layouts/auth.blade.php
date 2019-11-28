@@ -19,6 +19,7 @@
     <link href="{{asset('tnd/toast/jquery.toast.min.css')}}" rel="stylesheet">
     <link href="{{asset('tnd/css/bootstrap-reset.css')}}" rel="stylesheet">
     <link href="{{asset('tnd/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('tnd/sweetalert2/sweetalert2.min.css') }}">
 
     <link href="{{asset('tnd/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('tnd/css/style-responsive.css')}}" rel="stylesheet" />
@@ -114,6 +115,7 @@
 	<script src="{{asset('tnd/js/jquery/dist/jquery.min.js')}}"></script>
 	<script src="{{asset('tnd/bs3/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('tnd/toast/jquery.toast.min.js')}}"></script>
+	<script src="{{ asset('tnd/sweetalert2/sweetalert2.all.min.js') }}"></script>
 	<script>
       $(document).ready (function(){
           $(".alert-danger").fadeTo(6000, 100).slideUp(500, function(){

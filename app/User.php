@@ -3,11 +3,13 @@
 namespace App;
 
 use App\Models\Karyawan\Karyawan;
+use App\Models\TndOnline\TrainingSchedule;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+	use Notifiable;
     /**
      * The attributes that are mass assignable.
      *
@@ -35,4 +37,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Karyawan::class, 'karyawan_id');
     }
+	
+	public function schedules () {
+		return $this->belongsToMany(TrainingSchedule::class, 't_schedule_peserta', 'peserta_id', 'schedule_id');
+	}
 }
