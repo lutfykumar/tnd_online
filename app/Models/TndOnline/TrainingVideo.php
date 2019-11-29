@@ -12,4 +12,17 @@ class TrainingVideo extends Model
 		'local_code', 'training_id', 'name', 'slug',
 		'id_yt', 'urutan', 'status'
 	];
+	
+	public function training() {
+		return $this->belongsTo(TrainingPlan::class, 'training_id');
+	}
+	
+	public function view_video() {
+		return $this->hasMany(TrainingVideoViews::class, 'video_id');
+	}
+	
+	public function scopePublished($query)
+	{
+		return $query->where('status', true);
+	}
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models\TndOnline;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class TrainingHasil extends Model
@@ -12,4 +13,12 @@ class TrainingHasil extends Model
 		'schedule_id', 'peserta_id', 'kehadiran', 'pretest', 'postest',
 		'hasil', 'status'
 	];
+	
+	public function schedule() {
+		return $this->belongsTo(TrainingSchedule::class, 'schedule_id');
+	}
+	
+	public function peserta() {
+		return $this->belongsTo(User::class, 'peserta_id');
+	}
 }

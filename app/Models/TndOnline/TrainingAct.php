@@ -12,4 +12,17 @@ class TrainingAct extends Model
 		'training_id', 'schedule_id', 'tanggal'
 	];
 	public $timestamps = false;
+	
+	public function schedule()
+	{
+		return $this->belongsTo(TrainingSchedule::class, 'schedule_id');
+	}
+	public function training()
+	{
+		return $this->belongsTo(TrainingPlan::class, 'training_id', 'id');
+	}
+	public function peserta_act()
+	{
+		return $this->hasMany(TrainingPesertaAct::class, 'training_act_id');
+	}
 }

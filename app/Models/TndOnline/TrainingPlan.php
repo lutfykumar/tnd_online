@@ -13,4 +13,19 @@ class TrainingPlan extends Model
 		'pelaksanaan', 'plan', 'department_id', 'jam',
 		'biaya', 'trainer_id'
 	];
+	
+	public function soal()
+	{
+		return $this->hasMany(TrainingSoal::class, 'training_id');
+	}
+	
+	public  function schedule ()
+	{
+		return $this->hasOne(TrainingSchedule::class,'training_id');
+	}
+	
+	public  function video ()
+	{
+		return $this->hasMany(TrainingVideo::class,'training_id');
+	}
 }

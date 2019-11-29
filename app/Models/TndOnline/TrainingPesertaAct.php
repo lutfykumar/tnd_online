@@ -14,4 +14,9 @@ class TrainingPesertaAct extends Model
 		'lima', 'enam', 'tujuh', 'delapan', 'sembilan', 'sepuluh',
 		'sebelas', 'duabelas'
 	];
+	
+	public function training_act()
+	{
+		return $this->belongsTo(TrainingAct::class, 'training_act_id');
+	}
 }
