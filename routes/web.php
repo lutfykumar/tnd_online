@@ -19,7 +19,7 @@ Route::post('password/reset', 'Auth\ForgotPasswordController@reset');
 Route::get('password/reset/{token}', 'Auth\ForgotPasswordController@showResetForm')->name('password.reset');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('profile', 'Back\UserController@profile')->name('peserta.profile');
+	Route::get('profile', 'Back\UserController@profile')->name('peserta.profile');
     
 	Route::get('/home', 'HomeController@index')->name('home');
 	
@@ -38,4 +38,5 @@ Route::group(['middleware' => ['auth']], function () {
 	
 	Route::get('training/video/{id}', 'Peserta\DashboardController@video')->name('h.training.video');
 	Route::get('training/video/view/{id}', 'Peserta\DashboardController@detailModal')->name('h.training.view');
+	Route::get('table/p/dashboard', 'Peserta\DashboardController@dataTablePeserta')->name('table.h.p');
 });

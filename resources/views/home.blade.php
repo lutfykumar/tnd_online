@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Home')
 @push('after_style')
+	<link type="text/css" rel="stylesheet" href="{{ asset('lib/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+	<link type="text/css" rel="stylesheet" href="{{ asset('lib/dataTables/Responsive-2.2.3/css/responsive.bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('lib/sweetalert2/sweetalert2.min.css') }}">
 	<style>
 		.v_video {
 			width: 100%;
@@ -28,72 +31,21 @@
 			<div class="container-fluid">
 				<div class="row">
 					@if(Auth::check())
-						@foreach($model->schedules as $item)
-							@if ($item != null)
-								@foreach ($sche as $v)
-									@if ($v->id == $item->id)
-										@if ($today < $v->date_finish)
-											@foreach($hasil as $ha)
-												@if ($v->id == $ha->schedule_id && $ha->status == false)
-													@if ($v->count() > 0 )
-														<div class="col-md-3">
-															<div class="panel panel-default">
-																<div class="panel-heading">
-																	<div class="video-testimonial-block">
-																		<div class="video-thumbnail"><img src="{{url('/img/lnk.png')}}" alt="lnk" class="img-fluid img-responsive"></div>
-																	</div>
-																</div>
-																<div class="panel-body" style="padding: 0px 5px 0px 5px !important;">
-																	<div class="video-title">
-																		{{ $v->training->nama_training }}
-																	</div>
-																	<div class="text-center text-danger">
-																		Expired Date :
-																		{{ $v->date_from->format('d M Y') }}
-																		-
-																		{{ $v->date_finish->format('d M Y') }}
-																	</div>
-																</div>
-																<div class="panel-footer" style="background-color: #ffffff">
-																	<a href="{{ route('h.training.pretest', $v->id) }}" type="button" class="btn btn-success btn-block btn-xs btn-flat">Ikuti Training</a>
-																</div>
-															</div>
-														</div>
-													@else
-														<div class="col-md-6 col-md-offset-3">
-															<div class="title">
-																<h2 class="text-center"><strong>Sorry, No Training Found :(</strong></h2>
-															</div>
-														</div>
-													@endif
-												@endif
-												{{--@if ($v->id == $ha->schedule_id && $ha->status == true)--}}
-														{{--<div class="col-md-6 col-md-offset-3">--}}
-															{{--<div class="title">--}}
-																{{--<h2 class="text-center"><strong>Sorry, Training Sudah Di ikuti :(</strong></h2>--}}
-															{{--</div>--}}
-														{{--</div>--}}
-												{{--@endif--}}
-											@endforeach
-										@else
-											<div class="col-md-6 col-md-offset-3">
-												<div class="title">
-													<h2 class="text-center"><strong>Sorry, Training Sudah Expired :(</strong></h2>
-												</div>
-											</div>
-										@endif
-									@endif
-								@endforeach
-							@else
-								<div class="col-md-6 col-md-offset-3">
-									<div class="title">
-										<h2 class="text-center"><strong>Sorry, No Training Found :(</strong></h2>
-									</div>
-								</div>
-							@endif
+						<table id="datatable" class="table table-striped table-bordered table-hover nowrap" width="100%">
+							<thead class="text-primary">
+							<tr>
+								<th>No</th>
+								<th>Type</th>
+								<th>Jadwal Start</th>
+								<th>Jadwal Finish</th>
+								<th>Training</th>
+								<th>Action</th>
+							</tr>
+							</thead>
+							<tbody>
 							
-						@endforeach
-					
+							</tbody>
+						</table>
 					@else
 						<h3>Bukan Peserta</h3>
 					@endif
@@ -101,4 +53,26 @@
 			</div>
 		</section>
 	</section>
+@endsection
+@section('after_script')
+<script src="{{ asset('lib/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('lib/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ asset('lib/dataTables/Responsive-2.2.3/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('lib/dataTables/Responsive-2.2.3/js/responsive.bootstrap.min.js') }}"></script>
+<script>
+    $('#datatable').DataTable({
+        responsive: true,
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('table.h.p') }}",
+        columns: [
+            {data: 'DT_RowIndex', name: 'id'},
+            {data: 'type', name: 'type', orderable: false, searchable: false},
+            {data: 'date_from', name: 'date_from', orderable: false, searchable: false},
+            {data: 'date_finish', name: 'date_finish', orderable: false, searchable: false},
+            {data: 'training', name: 'training', orderable: false, searchable: false},
+            {data: 'action', name: 'action', orderable: false, searchable: false}
+        ]
+    });
+</script>
 @endsection

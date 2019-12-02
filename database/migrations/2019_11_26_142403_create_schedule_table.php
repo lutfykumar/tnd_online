@@ -21,7 +21,7 @@ class CreateScheduleTable extends Migration
 		    $table->dateTime('date_from');
 		    $table->dateTime('date_finish');
 		    $table->string('tempat')->nullable();
-		    $table->string('materi')->nullable();
+		    $table->string('tujuan')->nullable();
 		    $table->boolean('broadcast')->default(false);
 		    $table->integer('type');
 		    $table->timestamps();

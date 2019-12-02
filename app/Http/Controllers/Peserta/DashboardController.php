@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\Facades\DataTables;
 
 class DashboardController extends Controller
 {
@@ -231,4 +232,52 @@ class DashboardController extends Controller
 
         return view('peserta.training.finish', compact('schedule', 'nilaiPretest', 'nilaiPostest'))->with('level', 'peserta');
     }
+	
+	public function dataTablePeserta()
+	{
+		$model = User::where('level_id', 2)->get();
+		return DataTables::of($model)
+			->editColumn('type', function ($dt) {
+				foreach ($dt->schedules as $v) {
+					if ($v->type == 0) {
+						return '<span class="label label-success">Online</span>';
+					} else {
+						return '<span class="label label-success">Offline</span>';
+					}
+				}
+			})
+			->editColumn('date_from', function ($model) {
+				foreach ($model->schedules as $v) {
+					return $v->date_from ? with(new Carbon($v->date_from))->format('H:i - d M Y') : '';
+				}
+			})
+			->editColumn('date_finish', function ($model) {
+				foreach ($model->schedules as $v) {
+					return $v->date_finish ? with(new Carbon($v->date_finish))->format('H:i - d M Y') : '';
+				}
+			})
+//			->editColumn('training', function ($dt) {
+//				foreach ($dt->schedules as $v) {
+//					if ($v->training->kode == null) {
+//						$d = $v->updated_at->format('Y') . ' | Kode Tidak Ada | ' . $v->training->nama_training;
+//					} else {
+//						$d = $v->updated_at->format('Y') . ' | ' . $v->training->kode . ' | ' . $v->training->nama_training;
+//					}
+//					return $d;
+//				}
+//			})
+//			->editColumn('action', function ($model) {
+//				foreach ($model->peserta as $v) {
+//					if ($v->status != 0) {
+//						return '<span class="label label-success">Sudah</span>';
+//					} else {
+//						return '<a href="' . route('h.training.pretest', $model->id) . '" class="btn btn-warning btn-xs" title="Ikuti Training"><i class="fa fa-play-circle-o"></i> Belum</a>';
+//					}
+//				}
+//			})
+			->addIndexColumn()
+			->removeColumn('created_at', 'updated_at')
+			->rawColumns(['type', 'training', 'action'])
+			->make(true);
+	}
 }
