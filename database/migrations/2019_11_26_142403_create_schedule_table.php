@@ -18,12 +18,14 @@ class CreateScheduleTable extends Migration
 		    $table->string('local_code')->unique();
 		    $table->unsignedInteger('training_id');
 		    $table->unsignedInteger('user_id');
+        $table->unsignedInteger('trainer_id');
 		    $table->dateTime('date_from');
 		    $table->dateTime('date_finish');
 		    $table->string('tempat')->nullable();
 		    $table->string('tujuan')->nullable();
 		    $table->boolean('broadcast')->default(false);
 		    $table->integer('type');
+        $table->boolean('status')->default(false);
 		    $table->timestamps();
 	    });
 	    Schema::create('t_schedule_peserta', function (Blueprint $table) {

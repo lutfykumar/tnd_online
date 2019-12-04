@@ -229,7 +229,7 @@ class DashboardController extends Controller
         $schedule = TrainingSchedule::find($id);
         $nilaiPretest = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->pluck('pretest')->first();
         $nilaiPostest = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->pluck('postest')->first();
-
+        
         return view('peserta.training.finish', compact('schedule', 'nilaiPretest', 'nilaiPostest'))->with('level', 'peserta');
     }
 	

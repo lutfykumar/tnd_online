@@ -34,11 +34,11 @@
 						<table id="datatable" class="table table-striped table-bordered table-hover nowrap" width="100%">
 							<thead class="text-primary">
 							<tr>
-								<th>No</th>
 								<th>Type</th>
 								<th>Jadwal Start</th>
 								<th>Jadwal Finish</th>
 								<th>Training</th>
+								<th>Status</th>
 								<th>Action</th>
 							</tr>
 							</thead>
@@ -71,6 +71,7 @@
             {data: 'date_from', name: 'date_from', orderable: false, searchable: false},
             {data: 'date_finish', name: 'date_finish', orderable: false, searchable: false},
             {data: 'training', name: 'training', orderable: false, searchable: false},
+            {data: 'status', name: 'status', orderable: false, searchable: false},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ]
     });

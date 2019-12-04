@@ -17,6 +17,7 @@ class CreateTrainingSoalTable extends Migration
             $table->increments('id');
 	          $table->string('local_code')->unique();
             $table->unsignedInteger('training_id');
+            $table->integer('urutan');
             $table->text('soal');
             $table->string('pilihan_a');
             $table->string('pilihan_b');
