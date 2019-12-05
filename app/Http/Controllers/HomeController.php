@@ -11,17 +11,14 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-	    $sche = TrainingSchedule::where('broadcast', true)->get();
-	    $today = Carbon::now();
-	    $model = User::find(Auth::id());
-	    $hasil = TrainingHasil::where('peserta_id', Auth::id())->get();
-	    return view('home', compact('model', 'sche', 'hasil', 'today'))->with('level', 'peserta');
-    }
+	public function __construct()
+	{
+		setLocale(LC_ALL, 'IND');
+		$level = 'peserta';
+	}
+	
+	public function index()
+	{
+		return view('home')->with('level', 'peserta');
+	}
 }

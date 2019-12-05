@@ -79,7 +79,7 @@
                             <div class="row">
                                 <div class="col-md-4 col-md-offset-4">
                                     <div class="ba" style="padding: 10px 0px 0px 0px;">
-                                        <a href="{{ route('home') }}" class="btn btn-success btn-flat btn-block">Tutup Training</a>
+                                        <a href="{{ route('h.schedule') }}" class="btn btn-success btn-flat btn-block">Tutup Training</a>
                                     </div>
                                 </div>
                             </div>

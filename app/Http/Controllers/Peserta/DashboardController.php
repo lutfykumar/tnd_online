@@ -125,7 +125,7 @@ class DashboardController extends Controller
         $trainingAct = $schedule->training_act->where('training_id', $training_id)->where('schedule_id', $schedule_id)->get();
         $trainingAct_id = $trainingAct->pluck('id')->first();
         $pesertaAct_id = TrainingPesertaAct::where('training_act_id',$trainingAct_id)->where('karyawan_id', $karyawan_id)->pluck('id')->first();
-        dd($pesertaAct_id);
+//        dd($pesertaAct_id);
         $hasil_id = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->pluck('id')->first();
 
         $hasil = TrainingHasil::find($hasil_id);
@@ -141,6 +141,10 @@ class DashboardController extends Controller
             $pesertaAct->kehadiran = true;
             $pesertaAct->post = $nilaiPretest;
             $pesertaAct->save();
+	
+	        $schedule_status = TrainingSchedule::find($id);
+	        $schedule_status->status = true;
+	        $schedule_status->save();
         }
 
         Toastr::success('Postest Telah Berhasil dikerjakan!.', 'Training', ["positionClass" => "toast-top-right"]);
@@ -235,49 +239,65 @@ class DashboardController extends Controller
 	
 	public function dataTablePeserta()
 	{
-		$model = User::where('level_id', 2)->get();
-		return DataTables::of($model)
-			->editColumn('type', function ($dt) {
-				foreach ($dt->schedules as $v) {
-					if ($v->type == 0) {
-						return '<span class="label label-success">Online</span>';
+		$model = User::find(Auth::id());
+		$jadwal = $model->schedules()->where('broadcast', 1)->where('type', 0)->where('status', 0)->get();
+		return DataTables::of($jadwal)
+			->editColumn('type', function ($jadwal) {
+				if ($jadwal->type == 0) {
+					return '<span class="label label-success">Online</span>';
+				} else {
+					return '<span class="label label-success">Offline</span>';
+				}
+			})
+//      ->editColumn('schedule', function ($jadwal) {
+//        foreach ($jadwal->schedules as $v) {
+//          return $v->id;
+//        }
+//      })
+			->editColumn('date_from', function ($jadwal) {
+				if($jadwal->type == 0){
+					return $jadwal->date_from ? with(new Carbon($jadwal->date_from))->format('d M Y') : '';
+				}
+				else {
+					return $jadwal->date_from ? with(new Carbon($jadwal->date_from))->format('H:i - d M Y') : '';
+				}
+			})
+			->editColumn('date_finish', function ($jadwal) {
+				if($jadwal->type == 0){
+					return $jadwal->date_finish ? with(new Carbon($jadwal->date_finish))->format('d M Y') : '';
+				}
+				else {
+					return $jadwal->date_finish ? with(new Carbon($jadwal->date_finish))->format('H:i - d M Y') : '';
+				}
+			})
+			->editColumn('status', function ($jadwal) {
+				if($jadwal->training_hasil->pluck('hasil')->first() == 0) {
+					return '<span class="label label-danger">Belum Training</span>';
+				}
+				else {
+					return '<span class="label label-success">Lulus</span>';
+				}
+			})
+			->editColumn('training', function ($jadwal) {
+				if ($jadwal->training->kode == null) {
+					$d = $jadwal->updated_at->format('Y') . ' | Kode Tidak Ada | ' . $jadwal->training->nama_training;
+				} else {
+					$d = $jadwal->updated_at->format('Y') . ' | ' . $jadwal->training->kode . ' | ' . $jadwal->training->nama_training;
+				}
+				return $d;
+			})
+			->editColumn('action', function ($jadwal) {
+				foreach ($jadwal->training_hasil as $v) {
+					if ($v->status != 0) {
+						return '<span class="label label-success">Sudah</span>';
 					} else {
-						return '<span class="label label-success">Offline</span>';
+						return '<a href="' . route('h.training.pretest', $jadwal->id) . '" class="btn btn-warning btn-sm" title="Ikuti Training"><i class="fa fa-play-circle-o"></i> Klik Disini (Ikuti Training)</a>';
 					}
 				}
 			})
-			->editColumn('date_from', function ($model) {
-				foreach ($model->schedules as $v) {
-					return $v->date_from ? with(new Carbon($v->date_from))->format('H:i - d M Y') : '';
-				}
-			})
-			->editColumn('date_finish', function ($model) {
-				foreach ($model->schedules as $v) {
-					return $v->date_finish ? with(new Carbon($v->date_finish))->format('H:i - d M Y') : '';
-				}
-			})
-//			->editColumn('training', function ($dt) {
-//				foreach ($dt->schedules as $v) {
-//					if ($v->training->kode == null) {
-//						$d = $v->updated_at->format('Y') . ' | Kode Tidak Ada | ' . $v->training->nama_training;
-//					} else {
-//						$d = $v->updated_at->format('Y') . ' | ' . $v->training->kode . ' | ' . $v->training->nama_training;
-//					}
-//					return $d;
-//				}
-//			})
-//			->editColumn('action', function ($model) {
-//				foreach ($model->peserta as $v) {
-//					if ($v->status != 0) {
-//						return '<span class="label label-success">Sudah</span>';
-//					} else {
-//						return '<a href="' . route('h.training.pretest', $model->id) . '" class="btn btn-warning btn-xs" title="Ikuti Training"><i class="fa fa-play-circle-o"></i> Belum</a>';
-//					}
-//				}
-//			})
 			->addIndexColumn()
 			->removeColumn('created_at', 'updated_at')
-			->rawColumns(['type', 'training', 'action'])
+			->rawColumns(['status','type', 'training', 'action'])
 			->make(true);
 	}
 }

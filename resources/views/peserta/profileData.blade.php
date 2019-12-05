@@ -24,26 +24,26 @@
 					<div class="panel-body">
 						<div class="tab-content tasi-tab">
 							<div id="setting" class="tab-pane">
-								<form id="form-change-password" role="form" method="POST" action="{{url('password')}}" novalidate class="form-horizontal">
+								<form id="form-change-password" role="form" method="POST" action="{{url('password')}}" novalidate class="form-horizontal" autocomplete="off">
 									<div class="col-md-9">
 										<label for="current-password" class="col-sm-4 control-label">Password Lama</label>
 										<div class="col-sm-7">
 											<div class="form-group">
 												<input type="hidden" name="_token" value="{{ csrf_token()}}">
 												<input type="hidden" name="id" value="{{auth()->user()->id}}" placeholder="Password" >
-												<input type="password" class="form-control" id="current-password" name="password_lama" required placeholder="Password" >
+												<input type="password" class="form-control" id="current-password" name="password_lama" required placeholder="Password" autocomplete="off">
 											</div>
 										</div>
 										<label for="password" class="col-sm-4 control-label">Password</label>
 										<div class="col-sm-7">
 											<div class="form-group">
-												<input type="password" class="form-control" id="password" name="password" required placeholder="Password" >
+												<input type="password" class="form-control" id="password" name="password" required placeholder="Password" autocomplete="off">
 											</div>
 										</div>
 										<label for="password_confirmation" class="col-sm-4 control-label">Password(again)</label>
 										<div class="col-sm-7">
 											<div class="form-group">
-												<input type="password" class="form-control" id="password_confirmation" name="password_confirm" required placeholder="Re-enter Password">
+												<input type="password" class="form-control" id="password_confirmation" name="password_confirm" required placeholder="Re-enter Password" autocomplete="off">
 											</div>
 										</div>
 									</div>

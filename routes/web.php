@@ -8,8 +8,6 @@ Route::get('/clear-cache', function() {
     return 'DONE'; //Return anything
 });
 
-
-
 Route::get('/', 'Auth\LoginController@showloginform')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.do');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
@@ -24,6 +22,9 @@ Route::group(['middleware' => ['auth']], function () {
 	
 	Route::group(['middleware' => ['level_id:2']], function () {
 		Route::get('dashboard', 'HomeController@index')->name('h.schedule');
+		
+		// Training History
+		Route::get('history', 'Peserta\TrainingController@index')->name('h.history');
 		
 		Route::get('training/pretest/{id}', 'Peserta\DashboardController@pretest')->name('h.training.pretest');
 		Route::post('training/pretest/{id}', 'Peserta\DashboardController@storePretest')->name('h.training.pretest.store');
@@ -40,6 +41,8 @@ Route::group(['middleware' => ['auth']], function () {
 		
 		Route::get('training/video/{id}', 'Peserta\DashboardController@video')->name('h.training.video');
 		Route::get('training/video/view/{id}', 'Peserta\DashboardController@detailModal')->name('h.training.view');
+		
 		Route::get('table/p/dashboard', 'Peserta\DashboardController@dataTablePeserta')->name('table.h.p');
+		Route::get('table/p/history', 'Peserta\TrainingController@dataTableHistoryTraining')->name('table.h.h');
 	});
 });
