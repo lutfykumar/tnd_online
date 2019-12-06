@@ -20,7 +20,7 @@ class CreateTrainingVideoTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('id_yt');
-            $table->string('urutan');
+            $table->integer('urutan')->default('0');
             $table->boolean('status')->default(false);
             $table->timestamps();
         });

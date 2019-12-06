@@ -17,7 +17,7 @@ class CreateTrainingVideoViewsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('peserta_id');
             $table->unsignedInteger('video_id');
-            $table->string('view');
+            $table->integer('view');
             $table->timestamps();
         });
     }

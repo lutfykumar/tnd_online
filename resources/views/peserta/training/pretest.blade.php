@@ -37,7 +37,7 @@
                             <form role="form" method="POST" action="{{ route('h.training.pretest.store', $schedule->id) }}">
                                 <input type="hidden" value="{{ $schedule->id }}" name="schedule_id">
                                 {{ csrf_field() }}
-                                @foreach($schedule->training->soal->shuffle() as $key=>$v)
+                                @foreach($schedule->training->soal as $key=>$v)
                                     <input type="hidden" value="{{$v->id}}" name="nomer_soal[]">
                                     <div class="form-group{{ $errors->has('jawaban') ? ' has-error' : '' }}" style="border-bottom: 1px solid; padding: 10px; font-size: 15px">
                                         @php
