@@ -28,9 +28,8 @@ class DashboardController extends Controller
         $schedule = TrainingSchedule::find($id);
         $peserta_id = $schedule->training_hasil->pluck('peserta_id')->first();
         $cek = TrainingHasil::where('schedule_id', $id)->where('peserta_id', $peserta_id)->pluck('pretest')->first();
-//        dd($cek);
 
-        if ($cek != 0){
+        if ($cek != null){
             return redirect()->route('h.training.video', $id);
         } else {
             return view('peserta.training.pretest', compact('schedule'))->with('level', 'peserta');
@@ -83,7 +82,7 @@ class DashboardController extends Controller
         $cek = TrainingHasil::where('schedule_id', $id)->where('peserta_id', $peserta_id)->pluck('pretest')->first();
         $nilaiPretest = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->pluck('pretest')->first();
 
-        if ($cek != 0){
+        if ($cek != null){
             return view('peserta.training.nilai_pretest', compact('schedule','nilaiPretest'))->with('level', 'peserta');
         } else {
             return redirect()->route('h.training.pretest', $id);
@@ -95,7 +94,7 @@ class DashboardController extends Controller
         $peserta_id = $schedule->training_hasil->pluck('peserta_id')->first();
         $cek = TrainingHasil::where('schedule_id', $id)->where('peserta_id', $peserta_id)->pluck('postest')->first();
 
-        if ($cek != 0){
+        if ($cek != null){
             return redirect()->route('h.training.video', $id);
         } else {
             return view('peserta.training.postest', compact('schedule'))->with('level', 'peserta');
@@ -288,7 +287,7 @@ class DashboardController extends Controller
 			})
 			->editColumn('action', function ($jadwal) {
 				foreach ($jadwal->training_hasil as $v) {
-					if ($v->status != 0) {
+					if ($v->status != null) {
 						return '<span class="label label-success">Sudah</span>';
 					} else {
 						return '<a href="' . route('h.training.pretest', $jadwal->id) . '" class="btn btn-warning btn-sm" title="Ikuti Training"><i class="fa fa-play-circle-o"></i> Klik Disini (Ikuti Training)</a>';

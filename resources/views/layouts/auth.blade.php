@@ -45,7 +45,7 @@
 	</div>
 	<footer class="footer-section">
 		<div class="text-center">
-			Copyright  &copy; 2017 MIS PT. Lautan Natural Krimerindo
+			Copyright  &copy; {{date('Y')}} MIS PT. Lautan Natural Krimerindo
 		</div>
 	</footer>
 

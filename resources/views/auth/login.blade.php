@@ -34,12 +34,12 @@
 				<input type="text" name="username" id="username" class="form-control" placeholder="NIK Karyawan" required autofocus autocomplete="off" >
 				<input type="password" name="password" id="password" class="form-control" placeholder="PASSWORD" required autocomplete="off">
 			</div>
-			<label class="checkbox">
-				<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}><span style="color: #1fb5ac;">Remember me</span>
-				<span class="pull-right">
-					<a data-toggle="modal" href="#myModal"> Forgot Password?</a>
-				</span>
-			</label>
+			{{--<label class="checkbox">--}}
+				{{--<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}><span style="color: #1fb5ac;">Remember me</span>--}}
+				{{--<span class="pull-right">--}}
+					{{--<a data-toggle="modal" href="#myModal"> Forgot Password?</a>--}}
+				{{--</span>--}}
+			{{--</label>--}}
 			<button class="btn btn-lg btn-login btn-block" type="submit"> <i class="fa fa-user"></i> Sign in</button>
 		</div>
 	</form>

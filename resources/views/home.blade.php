@@ -65,6 +65,8 @@
 <script src="{{ asset('tnd/dataTables/Responsive-2.2.3/js/responsive.bootstrap.min.js') }}"></script>
 <script>
     $('#datatable').DataTable({
+      ordering: false,
+            searching : false,
         responsive: true,
         processing: true,
         serverSide: true,

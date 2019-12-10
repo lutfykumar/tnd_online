@@ -33,11 +33,6 @@ class TrainingController extends Controller
 					return '<span class="label label-success">Offline</span>';
 				}
 			})
-//      ->editColumn('schedule', function ($jadwal) {
-//        foreach ($jadwal->schedules as $v) {
-//          return $v->id;
-//        }
-//      })
 			->editColumn('date_from', function ($jadwal) {
 				if($jadwal->type == 0){
 					return $jadwal->date_from ? with(new Carbon($jadwal->date_from))->format('d M Y') : '';
@@ -70,6 +65,21 @@ class TrainingController extends Controller
 				}
 				return $d;
 			})
+      ->editColumn('pre', function ($jadwal) {
+//      	dd($jadwal->training_hasil);
+        if($jadwal->training_hasil->pluck('pretest')->first() == null) {
+          return '<span class="label label-warning">Belum Training</span>';
+        } else {
+          return '<span class="label label-success">'.$jadwal->training_hasil->pluck('pretest')->first().'</span>';
+        }
+      })
+      ->editColumn('post', function ($jadwal) {
+        if($jadwal->training_hasil->pluck('postest')->first() == null) {
+          return '<span class="label label-warning">Belum Training</span>';
+        } else {
+          return '<span class="label label-success">'.$jadwal->training_hasil->pluck('postest')->first().'</span>';
+        }
+      })
 //			->editColumn('action', function ($jadwal) {
 //				foreach ($jadwal->soal_peserta as $v) {
 //					if ($v->status != 0) {
@@ -81,7 +91,7 @@ class TrainingController extends Controller
 //			})
 			->addIndexColumn()
 			->removeColumn('created_at', 'updated_at')
-			->rawColumns(['status','type', 'training', 'action'])
+			->rawColumns(['pre','post','status','type', 'training', 'action'])
 			->make(true);
 	}
 }

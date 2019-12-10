@@ -24,32 +24,53 @@
 					<div class="panel-body">
 						<div class="tab-content tasi-tab">
 							<div id="setting" class="tab-pane">
-								<form id="form-change-password" role="form" method="POST" action="{{url('password')}}" novalidate class="form-horizontal" autocomplete="off">
-									<div class="col-md-9">
-										<label for="current-password" class="col-sm-4 control-label">Password Lama</label>
-										<div class="col-sm-7">
-											<div class="form-group">
-												<input type="hidden" name="_token" value="{{ csrf_token()}}">
-												<input type="hidden" name="id" value="{{auth()->user()->id}}" placeholder="Password" >
-												<input type="password" class="form-control" id="current-password" name="password_lama" required placeholder="Password" autocomplete="off">
-											</div>
+								<form method="POST" action="{{ route('password.change') }}" role="form" class="form-horizontal" style="padding: 15px">
+									{{ csrf_field() }}
+									{{ method_field('PATCH') }}
+									<div class="row">
+										<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+											<label for="old_password">Old Password : </label>
 										</div>
-										<label for="password" class="col-sm-4 control-label">Password</label>
-										<div class="col-sm-7">
+										<div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
 											<div class="form-group">
-												<input type="password" class="form-control" id="password" name="password" required placeholder="Password" autocomplete="off">
-											</div>
-										</div>
-										<label for="password_confirmation" class="col-sm-4 control-label">Password(again)</label>
-										<div class="col-sm-7">
-											<div class="form-group">
-												<input type="password" class="form-control" id="password_confirmation" name="password_confirm" required placeholder="Re-enter Password" autocomplete="off">
+												<div class="form-line">
+													<input type="password" id="old_password" class="form-control" placeholder="Enter your old password" name="old_password">
+												</div>
 											</div>
 										</div>
 									</div>
-									<div class="form-group">
-										<div class="col-sm-offset-6 col-sm-4">
-											<button type="submit" class="btn btn-primary">change password</button>
+									
+									<div class="row">
+										<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+											<label for="password">New Password : </label>
+										</div>
+										<div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+											<div class="form-group">
+												<div class="form-line">
+													<input type="password" id="password" class="form-control" placeholder="Enter your new password" name="password">
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+											<label for="confirm_password">Confirm Password : </label>
+										</div>
+										<div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+											<div class="form-group">
+												<div class="form-line">
+													<input type="password" id="confirm_password" class="form-control" placeholder="Enter your new password again" name="password_confirmation">
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									
+									
+									<div class="row">
+										<div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+											<button type="submit" class="btn btn-primary m-t-15 waves-effect">UPDATE</button>
 										</div>
 									</div>
 								</form>

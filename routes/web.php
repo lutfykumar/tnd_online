@@ -2,23 +2,27 @@
 
 //Auth::routes();
 Route::get('/clear-cache', function() {
-    Artisan::call('config:clear');
-    Artisan::call('cache:clear');
-    Artisan::call('config:cache');
+	Artisan::call('config:clear');
+	Artisan::call('cache:clear');
+	Artisan::call('route:clear');
+	Artisan::call('view:clear');
     return 'DONE'; //Return anything
 });
 
 Route::get('/', 'Auth\LoginController@showloginform')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.do');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('password/reset', 'Auth\ForgotPasswordController@reset');
-Route::get('password/reset/{token}', 'Auth\ForgotPasswordController@showResetForm')->name('password.reset');
+	Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+	Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+	
+	Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+//	Route::patch('password/reset', 'Back\UserController@reset')->name('password.update');
+//	Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('profile', 'Back\UserController@profile')->name('peserta.profile');
-	Route::post('password', 'Back\UserController@doPassword');
+	Route::patch('password', 'Back\UserController@doPassword')->name('password.change');
 	
 	Route::group(['middleware' => ['level_id:2']], function () {
 		Route::get('dashboard', 'HomeController@index')->name('h.schedule');

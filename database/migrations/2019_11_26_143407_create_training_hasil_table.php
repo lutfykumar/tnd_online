@@ -17,10 +17,10 @@ class CreateTrainingHasilTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('schedule_id');
             $table->unsignedInteger('peserta_id');
-            $table->string('kehadiran');
-            $table->string('pretest')->default('0');
-            $table->string('postest')->default('0');
-            $table->string('hasil')->default('0');
+		        $table->string('kehadiran')->nullable();
+		        $table->string('pretest')->nullable();
+		        $table->string('postest')->nullable();
+		        $table->string('hasil')->nullable();
             $table->boolean('status')->default(false);
             $table->timestamps();
         });

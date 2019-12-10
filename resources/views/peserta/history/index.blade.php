@@ -23,6 +23,8 @@
                             <th>Jadwal Start</th>
                             <th>Jadwal Finish</th>
                             <th>Training</th>
+                            <th>Pre Test</th>
+                            <th>Post Test</th>
                             <th>Status</th>
                         </tr>
                         </thead>
@@ -47,6 +49,8 @@
     <script src="{{ asset('tnd/dataTables/Responsive-2.2.3/js/responsive.bootstrap.min.js') }}"></script>
     <script>
         $('#datatable').DataTable({
+          ordering: false,
+            searching : false,
             responsive: true,
             processing: true,
             serverSide: true,
@@ -56,6 +60,8 @@
                 {data: 'date_from', name: 'date_from', orderable: false, searchable: false},
                 {data: 'date_finish', name: 'date_finish', orderable: false, searchable: false},
                 {data: 'training', name: 'training', orderable: false, searchable: false},
+                {data: 'pre', name: 'pre', orderable: false, searchable: false},
+                {data: 'post', name: 'post', orderable: false, searchable: false},
                 {data: 'status', name: 'status', orderable: false, searchable: false}
             ]
         });
