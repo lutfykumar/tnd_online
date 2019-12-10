@@ -287,7 +287,7 @@ class DashboardController extends Controller
 			})
 			->editColumn('action', function ($jadwal) {
 				foreach ($jadwal->training_hasil as $v) {
-					if ($v->status != null) {
+					if ($v->status != false) {
 						return '<span class="label label-success">Sudah</span>';
 					} else {
 						return '<a href="' . route('h.training.pretest', $jadwal->id) . '" class="btn btn-warning btn-sm" title="Ikuti Training"><i class="fa fa-play-circle-o"></i> Klik Disini (Ikuti Training)</a>';

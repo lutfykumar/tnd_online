@@ -66,7 +66,6 @@ class TrainingController extends Controller
 				return $d;
 			})
       ->editColumn('pre', function ($jadwal) {
-//      	dd($jadwal->training_hasil);
         if($jadwal->training_hasil->pluck('pretest')->first() == null) {
           return '<span class="label label-warning">Belum Training</span>';
         } else {
