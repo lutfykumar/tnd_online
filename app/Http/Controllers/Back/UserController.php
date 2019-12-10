@@ -34,7 +34,6 @@ class UserController extends Controller
 				
 				Toastr::success('Password Successfully Changed', 'Success', ["positionClass" => "toast-top-right"]);
 				return redirect()->back();
-				Auth::logout();
 			} else {
 				Toastr::error('New password cannot be the same as old password', 'Error', ["positionClass" => "toast-top-right"]);
 				return redirect()->back();

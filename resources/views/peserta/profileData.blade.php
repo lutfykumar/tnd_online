@@ -85,7 +85,7 @@
 										</div>
 										<div class="col-md-7">
 											<div class="profile-desk">
-												<h1>{{auth()->user()->karyawan->nama }}</h1>
+												<h1>{{auth()->user()->name }}</h1>
 												@if(auth()->user()->level_id == 1)
 													<span class="text-muted">Online</span>
 												@else
