@@ -59,7 +59,7 @@
                                         <label for="" class="control-label"> 1 . {{ $label }}</label>
                                         <div class="row" style="margin-left: 10px">
                                             <div class="col-md-2">
-                                                <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban1">
+                                                <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban1" required>
                                                 @if ($errors->has($fieldA))
                                                     <span class="help-block">
                                                     <strong>{{ $errors->first($fieldA) }}</strong>
@@ -68,7 +68,7 @@
                                                 <label for="{{ $fieldA }}" class="a">{{ $labelA }}</label>
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban1">
+                                                <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban1" required>
                                                 @if ($errors->has($fieldB))
                                                     <span class="help-block">
                                                     <strong>{{ $errors->first($fieldB) }}</strong>
@@ -77,7 +77,7 @@
                                                 <label for="{{ $fieldB }}" class="a">{{ $labelB }}</label>
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban1">
+                                                <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban1" required>
                                                 @if ($errors->has($fieldC))
                                                     <span class="help-block">
                                                     <strong>{{ $errors->first($fieldC) }}</strong>
@@ -86,7 +86,7 @@
                                                 <label for="{{ $fieldC }}" class="a">{{ $labelC }}</label>
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban1">
+                                                <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban1" required>
                                                 @if ($errors->has($fieldD))
                                                     <span class="help-block">
                                                     <strong>{{ $errors->first($fieldD) }}</strong>
@@ -95,7 +95,7 @@
                                                 <label for="{{ $fieldD }}" class="a">{{ $labelD }}</label>
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban1">
+                                                <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban1" required>
                                                 @if ($errors->has($fieldE))
                                                     <span class="help-block">
                                                     <strong>{{ $errors->first($fieldE) }}</strong>
@@ -123,7 +123,7 @@
                                         <label for="" class="control-label"> 2 . {{ $label }}</label>
                                         <div class="row" style="margin-left: 10px">
                                             <div class="col-md-2">
-                                                <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban2">
+                                                <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban2" required>
                                                 @if ($errors->has($fieldA))
                                                     <span class="help-block">
                                                     <strong>{{ $errors->first($fieldA) }}</strong>
@@ -132,7 +132,7 @@
                                                 <label for="{{ $fieldA }}" class="a">{{ $labelA }}</label>
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban2">
+                                                <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban2" required>
                                                 @if ($errors->has($fieldB))
                                                     <span class="help-block">
                                                     <strong>{{ $errors->first($fieldB) }}</strong>
@@ -141,7 +141,7 @@
                                                 <label for="{{ $fieldB }}" class="a">{{ $labelB }}</label>
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban2">
+                                                <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban2" required>
                                                 @if ($errors->has($fieldC))
                                                     <span class="help-block">
                                                     <strong>{{ $errors->first($fieldC) }}</strong>
@@ -150,7 +150,7 @@
                                                 <label for="{{ $fieldC }}" class="a">{{ $labelC }}</label>
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban2">
+                                                <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban2" required>
                                                 @if ($errors->has($fieldD))
                                                     <span class="help-block">
                                                     <strong>{{ $errors->first($fieldD) }}</strong>
@@ -159,7 +159,7 @@
                                                 <label for="{{ $fieldD }}" class="a">{{ $labelD }}</label>
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban2">
+                                                <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban2" required>
                                                 @if ($errors->has($fieldE))
                                                     <span class="help-block">
                                                     <strong>{{ $errors->first($fieldE) }}</strong>
@@ -187,7 +187,7 @@
                                     <label for="" class="control-label"> 3 . {{ $label }}</label>
                                     <div class="row" style="margin-left: 10px">
                                         <div class="col-md-2">
-                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban3">
+                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban3" required>
                                             @if ($errors->has($fieldA))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldA) }}</strong>
@@ -196,7 +196,7 @@
                                             <label for="{{ $fieldA }}" class="a">{{ $labelA }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban3">
+                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban3" required>
                                             @if ($errors->has($fieldB))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldB) }}</strong>
@@ -205,7 +205,7 @@
                                             <label for="{{ $fieldB }}" class="a">{{ $labelB }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban3">
+                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban3" required>
                                             @if ($errors->has($fieldC))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldC) }}</strong>
@@ -214,7 +214,7 @@
                                             <label for="{{ $fieldC }}" class="a">{{ $labelC }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban3">
+                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban3" required>
                                             @if ($errors->has($fieldD))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldD) }}</strong>
@@ -223,7 +223,7 @@
                                             <label for="{{ $fieldD }}" class="a">{{ $labelD }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban3">
+                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban3" required>
                                             @if ($errors->has($fieldE))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldE) }}</strong>
@@ -251,7 +251,7 @@
                                     <label for="" class="control-label"> 4 . {{ $label }}</label>
                                     <div class="row" style="margin-left: 10px">
                                         <div class="col-md-2">
-                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban4">
+                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban4" required>
                                             @if ($errors->has($fieldA))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldA) }}</strong>
@@ -260,7 +260,7 @@
                                             <label for="{{ $fieldA }}" class="a">{{ $labelA }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban4">
+                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban4" required>
                                             @if ($errors->has($fieldB))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldB) }}</strong>
@@ -269,7 +269,7 @@
                                             <label for="{{ $fieldB }}" class="a">{{ $labelB }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban4">
+                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban4" required>
                                             @if ($errors->has($fieldC))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldC) }}</strong>
@@ -278,7 +278,7 @@
                                             <label for="{{ $fieldC }}" class="a">{{ $labelC }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban4">
+                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban4" required>
                                             @if ($errors->has($fieldD))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldD) }}</strong>
@@ -287,7 +287,7 @@
                                             <label for="{{ $fieldD }}" class="a">{{ $labelD }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban4">
+                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban4" required>
                                             @if ($errors->has($fieldE))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldE) }}</strong>
@@ -315,7 +315,7 @@
                                     <label for="" class="control-label"> 5 . {{ $label }}</label>
                                     <div class="row" style="margin-left: 10px">
                                         <div class="col-md-2">
-                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban5">
+                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban5" required>
                                             @if ($errors->has($fieldA))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldA) }}</strong>
@@ -324,7 +324,7 @@
                                             <label for="{{ $fieldA }}" class="a">{{ $labelA }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban5">
+                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban5" required>
                                             @if ($errors->has($fieldB))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldB) }}</strong>
@@ -333,7 +333,7 @@
                                             <label for="{{ $fieldB }}" class="a">{{ $labelB }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban5">
+                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban5" required>
                                             @if ($errors->has($fieldC))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldC) }}</strong>
@@ -342,7 +342,7 @@
                                             <label for="{{ $fieldC }}" class="a">{{ $labelC }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban5">
+                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban5" required>
                                             @if ($errors->has($fieldD))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldD) }}</strong>
@@ -351,7 +351,7 @@
                                             <label for="{{ $fieldD }}" class="a">{{ $labelD }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban5">
+                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban5" required>
                                             @if ($errors->has($fieldE))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldE) }}</strong>
@@ -379,7 +379,7 @@
                                     <label for="" class="control-label"> 6 . {{ $label }}</label>
                                     <div class="row" style="margin-left: 10px">
                                         <div class="col-md-2">
-                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban6">
+                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban6" required>
                                             @if ($errors->has($fieldA))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldA) }}</strong>
@@ -388,7 +388,7 @@
                                             <label for="{{ $fieldA }}" class="a">{{ $labelA }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban6">
+                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban6" required>
                                             @if ($errors->has($fieldB))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldB) }}</strong>
@@ -397,7 +397,7 @@
                                             <label for="{{ $fieldB }}" class="a">{{ $labelB }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban6">
+                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban6" required>
                                             @if ($errors->has($fieldC))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldC) }}</strong>
@@ -406,7 +406,7 @@
                                             <label for="{{ $fieldC }}" class="a">{{ $labelC }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban6">
+                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban6" required>
                                             @if ($errors->has($fieldD))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldD) }}</strong>
@@ -415,7 +415,7 @@
                                             <label for="{{ $fieldD }}" class="a">{{ $labelD }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban6">
+                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban6" required>
                                             @if ($errors->has($fieldE))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldE) }}</strong>
@@ -443,7 +443,7 @@
                                     <label for="" class="control-label"> 7 . {{ $label }}</label>
                                     <div class="row" style="margin-left: 10px">
                                         <div class="col-md-2">
-                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban7">
+                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban7" required>
                                             @if ($errors->has($fieldA))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldA) }}</strong>
@@ -452,7 +452,7 @@
                                             <label for="{{ $fieldA }}" class="a">{{ $labelA }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban7">
+                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban7" required>
                                             @if ($errors->has($fieldB))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldB) }}</strong>
@@ -461,7 +461,7 @@
                                             <label for="{{ $fieldB }}" class="a">{{ $labelB }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban7">
+                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban7" required>
                                             @if ($errors->has($fieldC))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldC) }}</strong>
@@ -470,7 +470,7 @@
                                             <label for="{{ $fieldC }}" class="a">{{ $labelC }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban7">
+                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban7" required>
                                             @if ($errors->has($fieldD))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldD) }}</strong>
@@ -479,7 +479,7 @@
                                             <label for="{{ $fieldD }}" class="a">{{ $labelD }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban7">
+                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban7" required>
                                             @if ($errors->has($fieldE))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldE) }}</strong>
@@ -507,7 +507,7 @@
                                     <label for="" class="control-label"> 8 . {{ $label }}</label>
                                     <div class="row" style="margin-left: 10px">
                                         <div class="col-md-2">
-                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban8">
+                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban8" required>
                                             @if ($errors->has($fieldA))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldA) }}</strong>
@@ -516,7 +516,7 @@
                                             <label for="{{ $fieldA }}" class="a">{{ $labelA }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban8">
+                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban8" required>
                                             @if ($errors->has($fieldB))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldB) }}</strong>
@@ -525,7 +525,7 @@
                                             <label for="{{ $fieldB }}" class="a">{{ $labelB }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban8">
+                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban8" required>
                                             @if ($errors->has($fieldC))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldC) }}</strong>
@@ -534,7 +534,7 @@
                                             <label for="{{ $fieldC }}" class="a">{{ $labelC }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban8">
+                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban8" required>
                                             @if ($errors->has($fieldD))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldD) }}</strong>
@@ -543,7 +543,7 @@
                                             <label for="{{ $fieldD }}" class="a">{{ $labelD }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban8">
+                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban8" required>
                                             @if ($errors->has($fieldE))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldE) }}</strong>
@@ -571,7 +571,7 @@
                                     <label for="" class="control-label"> 9 . {{ $label }}</label>
                                     <div class="row" style="margin-left: 10px">
                                         <div class="col-md-2">
-                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban9">
+                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban9" required>
                                             @if ($errors->has($fieldA))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldA) }}</strong>
@@ -580,7 +580,7 @@
                                             <label for="{{ $fieldA }}" class="a">{{ $labelA }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban9">
+                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban9" required>
                                             @if ($errors->has($fieldB))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldB) }}</strong>
@@ -589,7 +589,7 @@
                                             <label for="{{ $fieldB }}" class="a">{{ $labelB }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban9">
+                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban9" required>
                                             @if ($errors->has($fieldC))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldC) }}</strong>
@@ -598,7 +598,7 @@
                                             <label for="{{ $fieldC }}" class="a">{{ $labelC }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban9">
+                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban9" required>
                                             @if ($errors->has($fieldD))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldD) }}</strong>
@@ -607,7 +607,7 @@
                                             <label for="{{ $fieldD }}" class="a">{{ $labelD }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban9">
+                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban9" required>
                                             @if ($errors->has($fieldE))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldE) }}</strong>
@@ -635,7 +635,7 @@
                                     <label for="" class="control-label"> 10 . {{ $label }}</label>
                                     <div class="row" style="margin-left: 10px">
                                         <div class="col-md-2">
-                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban10">
+                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban10" required>
                                             @if ($errors->has($fieldA))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldA) }}</strong>
@@ -644,7 +644,7 @@
                                             <label for="{{ $fieldA }}" class="a">{{ $labelA }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban10">
+                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban10" required>
                                             @if ($errors->has($fieldB))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldB) }}</strong>
@@ -653,7 +653,7 @@
                                             <label for="{{ $fieldB }}" class="a">{{ $labelB }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban10">
+                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban10" required>
                                             @if ($errors->has($fieldC))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldC) }}</strong>
@@ -662,7 +662,7 @@
                                             <label for="{{ $fieldC }}" class="a">{{ $labelC }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban10">
+                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban10" required>
                                             @if ($errors->has($fieldD))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldD) }}</strong>
@@ -671,7 +671,7 @@
                                             <label for="{{ $fieldD }}" class="a">{{ $labelD }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban10">
+                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban10" required>
                                             @if ($errors->has($fieldE))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldE) }}</strong>
@@ -699,7 +699,7 @@
                                     <label for="" class="control-label"> 11 . {{ $label }}</label>
                                     <div class="row" style="margin-left: 10px">
                                         <div class="col-md-2">
-                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban11">
+                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban11" required>
                                             @if ($errors->has($fieldA))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldA) }}</strong>
@@ -708,7 +708,7 @@
                                             <label for="{{ $fieldA }}" class="a">{{ $labelA }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban11">
+                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban11" required>
                                             @if ($errors->has($fieldB))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldB) }}</strong>
@@ -717,7 +717,7 @@
                                             <label for="{{ $fieldB }}" class="a">{{ $labelB }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban11">
+                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban11" required>
                                             @if ($errors->has($fieldC))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldC) }}</strong>
@@ -726,7 +726,7 @@
                                             <label for="{{ $fieldC }}" class="a">{{ $labelC }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban11">
+                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban11" required>
                                             @if ($errors->has($fieldD))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldD) }}</strong>
@@ -735,7 +735,7 @@
                                             <label for="{{ $fieldD }}" class="a">{{ $labelD }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban11">
+                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban11" required>
                                             @if ($errors->has($fieldE))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldE) }}</strong>
@@ -763,7 +763,7 @@
                                     <label for="" class="control-label"> 12 . {{ $label }}</label>
                                     <div class="row" style="margin-left: 10px">
                                         <div class="col-md-2">
-                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban12">
+                                            <input type="radio" value="1" id="{{ $fieldA }}" class="flat-green" name="jawaban12" required>
                                             @if ($errors->has($fieldA))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldA) }}</strong>
@@ -772,7 +772,7 @@
                                             <label for="{{ $fieldA }}" class="a">{{ $labelA }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban12">
+                                            <input type="radio" value="2" id="{{ $fieldB }}" class="flat-green" name="jawaban12" required>
                                             @if ($errors->has($fieldB))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldB) }}</strong>
@@ -781,7 +781,7 @@
                                             <label for="{{ $fieldB }}" class="a">{{ $labelB }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban12">
+                                            <input type="radio" value="3" id="{{ $fieldC }}" class="flat-green" name="jawaban12" required>
                                             @if ($errors->has($fieldC))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldC) }}</strong>
@@ -790,7 +790,7 @@
                                             <label for="{{ $fieldC }}" class="a">{{ $labelC }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban12">
+                                            <input type="radio" value="4" id="{{ $fieldD }}" class="flat-green" name="jawaban12" required>
                                             @if ($errors->has($fieldD))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldD) }}</strong>
@@ -799,7 +799,7 @@
                                             <label for="{{ $fieldD }}" class="a">{{ $labelD }}</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban12">
+                                            <input type="radio" value="4" id="{{ $fieldE }}" class="flat-green" name="jawaban12" required>
                                             @if ($errors->has($fieldE))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first($fieldE) }}</strong>
