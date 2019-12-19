@@ -239,7 +239,7 @@ class DashboardController extends Controller
 	public function dataTablePeserta()
 	{
 		$model = User::find(Auth::id());
-		$jadwal = $model->schedules()->where('broadcast', 1)->where('type', 0)->where('status', 0)->get();
+		$jadwal = $model->schedules()->whereDate('date_finish','>=', date('Y-m-d'))->where('broadcast', 1)->where('type', 0)->where('status', 0)->get();
 		return DataTables::of($jadwal)
 			->editColumn('type', function ($jadwal) {
 				if ($jadwal->type == 0) {
