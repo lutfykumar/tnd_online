@@ -26,10 +26,10 @@ class DashboardController extends Controller
     
     public function pretest($id) {
         $schedule = TrainingSchedule::find($id);
-        $peserta_id = $schedule->training_hasil->pluck('peserta_id')->first();
-        $cek = TrainingHasil::where('schedule_id', $id)->where('peserta_id', $peserta_id)->pluck('pretest')->first();
+        $m_hasil = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->get();
+        $cek = $m_hasil->pluck('pretest')->first();
 
-        if ($cek != null){
+        if ($cek > 0){
             return redirect()->route('h.training.video', $id);
         } else {
             return view('peserta.training.pretest', compact('schedule'))->with('level', 'peserta');
@@ -78,11 +78,11 @@ class DashboardController extends Controller
 
     public function nilaiPretest($id) {
         $schedule = TrainingSchedule::find($id);
-        $peserta_id = $schedule->training_hasil->pluck('peserta_id')->first();
-        $cek = TrainingHasil::where('schedule_id', $id)->where('peserta_id', $peserta_id)->pluck('pretest')->first();
-        $nilaiPretest = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->pluck('pretest')->first();
+	      $m_hasil = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->get();
+        $cek = $m_hasil->pluck('pretest')->first();
+        $nilaiPretest = $m_hasil->pluck('pretest')->first();
 
-        if ($cek != null){
+        if ($cek >= 0){
             return view('peserta.training.nilai_pretest', compact('schedule','nilaiPretest'))->with('level', 'peserta');
         } else {
             return redirect()->route('h.training.pretest', $id);
@@ -91,10 +91,10 @@ class DashboardController extends Controller
 
     public function postest($id) {
         $schedule = TrainingSchedule::find($id);
-        $peserta_id = $schedule->training_hasil->pluck('peserta_id')->first();
-        $cek = TrainingHasil::where('schedule_id', $id)->where('peserta_id', $peserta_id)->pluck('postest')->first();
+	      $m_hasil = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->get();
+        $cek = $m_hasil->pluck('postest')->first();
 
-        if ($cek != null){
+        if ($cek > 0){
             return redirect()->route('h.training.video', $id);
         } else {
             return view('peserta.training.postest', compact('schedule'))->with('level', 'peserta');
@@ -141,9 +141,9 @@ class DashboardController extends Controller
             $pesertaAct->post = $nilaiPretest;
             $pesertaAct->save();
 	
-	        $schedule_status = TrainingSchedule::find($id);
-	        $schedule_status->status = true;
-	        $schedule_status->save();
+//	        $schedule_status = TrainingSchedule::find($id);
+//	        $schedule_status->status = true;
+//	        $schedule_status->save();
         }
 
         Toastr::success('Postest Telah Berhasil dikerjakan!.', 'Training', ["positionClass" => "toast-top-right"]);
@@ -152,11 +152,11 @@ class DashboardController extends Controller
 
     public function nilaiPostest($id) {
         $schedule = TrainingSchedule::find($id);
-        $peserta_id = $schedule->soal_peserta->pluck('peserta_id')->first();
-        $cek = TrainingHasil::where('schedule_id', $id)->where('peserta_id', $peserta_id)->pluck('postest')->first();
-        $nilaiPostest = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->pluck('postest')->first();
+	      $m_hasil = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->get();
+        $cek = $m_hasil->pluck('postest')->first();
+        $nilaiPostest = $m_hasil->pluck('postest')->first();
 
-        if ($cek != null){
+        if ($cek >= 0){
             return view('peserta.training.nilai_postest', compact('schedule','nilaiPostest'))->with('level', 'peserta');
         } else {
             return redirect()->route('h.training.postest', $id);
@@ -165,8 +165,9 @@ class DashboardController extends Controller
 
     public function video($id) {
         $schedule = TrainingSchedule::find($id);
-        $nilaiPretest = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->pluck('pretest')->first();
-        $nilaiPostest = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->pluck('postest')->first();
+		    $m_hasil = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->get();
+        $nilaiPretest = $m_hasil->pluck('pretest')->first();
+        $nilaiPostest = $m_hasil->pluck('postest')->first();
 
         return view('peserta.training.video', compact('schedule', 'nilaiPretest', 'nilaiPostest'))->with('level', 'peserta');
     }
@@ -230,8 +231,9 @@ class DashboardController extends Controller
 
     public function finish($id) {
         $schedule = TrainingSchedule::find($id);
-        $nilaiPretest = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->pluck('pretest')->first();
-        $nilaiPostest = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->pluck('postest')->first();
+		    $m_hasil = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->get();
+		    $nilaiPretest = $m_hasil->pluck('pretest')->first();
+		    $nilaiPostest = $m_hasil->pluck('postest')->first();
         
         return view('peserta.training.finish', compact('schedule', 'nilaiPretest', 'nilaiPostest'))->with('level', 'peserta');
     }
@@ -270,11 +272,15 @@ class DashboardController extends Controller
 				}
 			})
 			->editColumn('status', function ($jadwal) {
-				if($jadwal->training_hasil->pluck('hasil')->first() == 0) {
-					return '<span class="label label-danger">Belum Training</span>';
-				}
-				else {
-					return '<span class="label label-success">Lulus</span>';
+				foreach ($jadwal->training_hasil as $v) {
+					if ($v->peserta_id == Auth::id()) {
+						if($v->pluck('hasil')->first() == 0) {
+							return '<span class="label label-danger">Belum</span>';
+						}
+						else {
+							return '<span class="label label-success">Lulus</span>';
+						}
+					}
 				}
 			})
 			->editColumn('training', function ($jadwal) {
@@ -287,10 +293,12 @@ class DashboardController extends Controller
 			})
 			->editColumn('action', function ($jadwal) {
 				foreach ($jadwal->training_hasil as $v) {
-					if ($v->status != false) {
-						return '<span class="label label-success">Sudah</span>';
-					} else {
-						return '<a href="' . route('h.training.pretest', $jadwal->id) . '" class="btn btn-warning btn-sm" title="Ikuti Training"><i class="fa fa-play-circle-o"></i> Klik Disini (Ikuti Training)</a>';
+					if ($v->peserta_id == Auth::id()) {
+						if ($v->status != false) {
+							return '<span class="label label-success">Sudah</span>';
+						} else {
+							return '<a href="' . route('h.training.pretest', $jadwal->id) . '" class="btn btn-warning btn-sm" title="Ikuti Training"><i class="fa fa-play-circle-o"></i> Klik Disini (Ikuti Training)</a>';
+						}
 					}
 				}
 			})
