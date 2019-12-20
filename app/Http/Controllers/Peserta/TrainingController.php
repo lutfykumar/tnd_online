@@ -50,11 +50,14 @@ class TrainingController extends Controller
 				}
 			})
 			->editColumn('status', function ($jadwal) {
-				if($jadwal->training_hasil->pluck('hasil')->first() == 0) {
-					return '<span class="label label-danger">Belum Lulus</span>';
-				}
-				else {
-					return '<span class="label label-success">Lulus</span>';
+				foreach ($jadwal->training_hasil as $v) {
+					if ($v->peserta_id == Auth::id()) {
+						if ($v->hasil == 0) {
+							return '<span class="label label-danger">Belum Lulus</span>';
+						} else {
+							return '<span class="label label-success">Lulus</span>';
+						}
+					}
 				}
 			})
 			->editColumn('training', function ($jadwal) {
@@ -66,18 +69,26 @@ class TrainingController extends Controller
 				return $d;
 			})
       ->editColumn('pre', function ($jadwal) {
-        if($jadwal->training_hasil->pluck('pretest')->first() == null) {
-          return '<span class="label label-warning">Belum Training</span>';
-        } else {
-          return '<span class="label label-success">'.$jadwal->training_hasil->pluck('pretest')->first().'</span>';
-        }
+	      foreach ($jadwal->training_hasil as $v) {
+		      if ($v->peserta_id == Auth::id()) {
+			      if ($v->pretest == null) {
+				      return '<span class="label label-warning">Belum Training</span>';
+			      } else {
+				      return '<span class="label label-success">' . $v->pretest . '</span>';
+			      }
+		      }
+	      }
       })
       ->editColumn('post', function ($jadwal) {
-        if($jadwal->training_hasil->pluck('postest')->first() == null) {
-          return '<span class="label label-warning">Belum Training</span>';
-        } else {
-          return '<span class="label label-success">'.$jadwal->training_hasil->pluck('postest')->first().'</span>';
-        }
+				foreach ($jadwal->training_hasil as $v) {
+					if ($v->peserta_id == Auth::id()) {
+						if ($v->postest == null) {
+							return '<span class="label label-warning">Belum Training</span>';
+						} else {
+							return '<span class="label label-success">' . $v->postest . '</span>';
+						}
+					}
+				}
       })
 //			->editColumn('action', function ($jadwal) {
 //				foreach ($jadwal->soal_peserta as $v) {
