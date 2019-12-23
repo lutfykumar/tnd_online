@@ -134,8 +134,8 @@
                                 @php
                                     $no =1;
                                 @endphp
-                                @if($schedule->training->video->count() > 0)
-                                    @foreach($schedule->training->video as $video)
+                                @if($schedule->training->video->published->count() > 0)
+                                    @foreach($schedule->training->video->published as $video)
                                         <h2 class="text-capitalize">Video {{$no++ }} - {{ $video->name}}</h2>
                                         <section>
                                             <div class="video-testimonial-block">
