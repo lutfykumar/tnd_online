@@ -29,7 +29,7 @@ class DashboardController extends Controller
         $m_hasil = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->get();
         $cek = $m_hasil->pluck('pretest')->first();
 
-        if ($cek > 0){
+        if ($cek != null){
             return redirect()->route('h.training.video', $id);
         } else {
             return view('peserta.training.pretest', compact('schedule'))->with('level', 'peserta');
@@ -82,7 +82,7 @@ class DashboardController extends Controller
         $cek = $m_hasil->pluck('pretest')->first();
         $nilaiPretest = $m_hasil->pluck('pretest')->first();
 
-        if ($cek >= 0){
+        if ($cek != null){
             return view('peserta.training.nilai_pretest', compact('schedule','nilaiPretest'))->with('level', 'peserta');
         } else {
             return redirect()->route('h.training.pretest', $id);
