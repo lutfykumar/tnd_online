@@ -18,7 +18,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 	Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 //	Route::patch('password/reset', 'Back\UserController@reset')->name('password.update');
 //	Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
-
+Route::get('/getlocalcode', 'Back\SupportController@getLocalCode')->name('support.local_code');
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('profile', 'Back\UserController@profile')->name('peserta.profile');

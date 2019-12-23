@@ -274,7 +274,7 @@ class DashboardController extends Controller
 			->editColumn('status', function ($jadwal) {
 				foreach ($jadwal->training_hasil as $v) {
 					if ($v->peserta_id == Auth::id()) {
-						if($v->pluck('hasil')->first() == 0) {
+						if($v->hasil == 0) {
 							return '<span class="label label-danger">Belum</span>';
 						}
 						else {
