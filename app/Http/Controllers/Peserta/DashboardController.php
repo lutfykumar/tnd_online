@@ -129,6 +129,7 @@ class DashboardController extends Controller
 
         $hasil = TrainingHasil::find($hasil_id);
         $hasil->postest = $nilaiPretest;
+        // dd($nilaiPretest);
         if ($nilaiPretest < 60) {
             $hasil->hasil = false;
         } else {
@@ -168,8 +169,10 @@ class DashboardController extends Controller
 		    $m_hasil = TrainingHasil::where('schedule_id', $id)->where('peserta_id', Auth::id())->get();
         $nilaiPretest = $m_hasil->pluck('pretest')->first();
         $nilaiPostest = $m_hasil->pluck('postest')->first();
+        $training_id = $schedule->training->id;
+        $videos = TrainingVideo::where('training_id', $training_id)->where('status', true)->get();
 
-        return view('peserta.training.video', compact('schedule', 'nilaiPretest', 'nilaiPostest'))->with('level', 'peserta');
+        return view('peserta.training.video', compact('schedule', 'nilaiPretest', 'nilaiPostest', 'videos'))->with('level', 'peserta');
     }
 
     public function detailModal($id)
@@ -274,11 +277,11 @@ class DashboardController extends Controller
 			->editColumn('status', function ($jadwal) {
 				foreach ($jadwal->training_hasil as $v) {
 					if ($v->peserta_id == Auth::id()) {
-						if($v->hasil == 0) {
-							return '<span class="label label-danger">Belum</span>';
+						if($v->status == 0) {
+							return '<span class="label label-danger">Belum Training</span>';
 						}
 						else {
-							return '<span class="label label-success">Lulus</span>';
+							return '<span class="label label-success">Sudah Training</span>';
 						}
 					}
 				}

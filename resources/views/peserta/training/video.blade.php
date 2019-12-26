@@ -127,15 +127,15 @@
                 <div class="col-sm-10 col-md-offset-1">
                     <section class="panel">
                         <header class="panel-heading text-center">
-                            <div class="video-title">{{ $schedule->training->pluck('nama_training')->first() }}</div>
+                            <div class="video-title">{{ $schedule->training->nama_training }}</div>
                         </header>
                         <div class="panel-body">
                             <div id="wizard" class="">
                                 @php
                                     $no =1;
                                 @endphp
-                                @if($schedule->training->video->published->count() > 0)
-                                    @foreach($schedule->training->video->published as $video)
+                                @if($videos->count() > 0)
+                                    @foreach($videos as $video)
                                         <h2 class="text-capitalize">Video {{$no++ }} - {{ $video->name}}</h2>
                                         <section>
                                             <div class="video-testimonial-block">
